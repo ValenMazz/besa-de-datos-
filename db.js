@@ -17,14 +17,15 @@ const firebaseConfig = {
     //Esta información corresponde a mi cuenta de firebase
     //Cada proyecto tiene su propia configuración única
     //Reemplazá los valores por los de tu propio proyecto de Firebase si estás siguiendo este ejemplo
-    apiKey: "INGRESA TU API KEY",
-    authDomain: "INGRESA TU AUTH DOMAIN",
-    databaseURL: "INGRESA TU DATABASE URL",
-    projectId: "INGRESA TU PROJECT ID",
-    storageBucket: "INGRESA TU STORAGE BUCKET",
-    messagingSenderId: "INGRESA TU MESSAGING SENDER ID",
-    appId: "INGRESA TU APP ID"
-};
+    
+        apiKey: "AIzaSyBRIj6XV-ODhvEz5RUo4bLRWmWOzgP2Ce8",
+        authDomain: "basededatos-16bad.firebaseapp.com",
+        databaseURL: "https://basededatos-16bad-default-rtdb.firebaseio.com/", // 👈 ESTA LÍNEA ES CLAVE
+        projectId: "basededatos-16bad",
+        storageBucket: "basededatos-16bad.firebasestorage.app",
+        messagingSenderId: "568461938141",
+        appId: "1:568461938141:web:141767f08d69d06a183a34"
+      };
 
 // Inicializamos la app de firebase
 const app = initializeApp(firebaseConfig);
@@ -35,10 +36,8 @@ const db = getDatabase(app);
 //y donde agregaremos nuevos datos
 //Primero los  iunput para agregar nuevos estudiantes
 let inputNombre = document.querySelector("#nombre");
-let inputApellido = document.querySelector("#apellido");
-let inputEdad = document.querySelector("#edad");
-let inputDni = document.querySelector("#dni");
-let inputNota = document.querySelector("#nota");
+let inputApellido = document.querySelector("#pais");
+let inputDni = document.querySelector("#fundacion");
 //y el boton
 let btnAgregar = document.querySelector("#agregar");
 
@@ -47,18 +46,17 @@ btnAgregar.onclick = function () {
     //Creamos una referencia a la ubicación "estudiantes" en la base de datos
     //Y con el dni como clave unica
     //Esto asegura que cada estudiante se almacene bajo su dni
-    let estudiantesRef = ref(db, 'estudiantes/' + inputDni.value);
+    let electrodomesticosRef = ref(db, 'electrodomesticos/' + inputnombre.value);
 
     //Usamos la función "set" para escribir los datos del nuevo estudiante en la base de datos
     //Le indicamos donde almacenar los datos y qué datos almacenar
 
 
-    set(estudiantesRef, {
+    set(electrodomesticosRef, {
         //Tomamos cada dato desde los inputs del formulario
         nombre: inputNombre.value,
-        apellido: inputApellido.value,
-        edad: inputEdad.value,
-        nota: inputNota.value
+        fndacion: inputFundacion.value,
+        pais: inputPais.value,
     })
 
 
@@ -66,11 +64,11 @@ btnAgregar.onclick = function () {
         //o si hubo un error al agregar los datos
         //Usamos la función "then" para manejar el caso exitoso
         .then(() => {
-            alert("Estudiante agregado correctamente");
+            alert("Electrodomestico agregado correctamente");
         })
         //Usamos la función "catch" para manejar errores
         .catch((error) => {
-            alert("Error al agregar estudiante: " + error.message);
+            alert("Error al agregar electrodomestico: " + error.message);
         }); 
 
 }
