@@ -36,8 +36,8 @@ const db = getDatabase(app);
 //y donde agregaremos nuevos datos
 //Primero los  iunput para agregar nuevos estudiantes
 let inputNombre = document.querySelector("#nombre");
-let inputApellido = document.querySelector("#pais");
-let inputDni = document.querySelector("#fundacion");
+let inputPais = document.querySelector("#pais");
+let inputFundacion = document.querySelector("#fundacion");
 //y el boton
 let btnAgregar = document.querySelector("#agregar");
 
@@ -46,7 +46,7 @@ btnAgregar.onclick = function () {
     //Creamos una referencia a la ubicación "estudiantes" en la base de datos
     //Y con el dni como clave unica
     //Esto asegura que cada estudiante se almacene bajo su dni
-    let electrodomesticosRef = ref(db, 'electrodomesticos/' + inputnombre.value);
+    let electrodomesticosRef = ref(db, 'electrodomesticos/' + inputFundacion.value);
 
     //Usamos la función "set" para escribir los datos del nuevo estudiante en la base de datos
     //Le indicamos donde almacenar los datos y qué datos almacenar
